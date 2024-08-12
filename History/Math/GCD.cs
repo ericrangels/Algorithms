@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algorithms
+namespace Algorithms.History
 {
     public class GCD
     {
@@ -38,6 +38,19 @@ namespace Algorithms
             }
 
             return result;
+        }
+
+        public void executeGDC()
+        {
+            GCD gcd = new GCD();
+
+            int[] arr1 = { 2, 3, 4, 5, 6 };
+            int n1 = arr1.Length;
+            Console.Write("\n GDC 1 = " + gcd.calculationGCD(arr1, n1));
+
+            int[] arr2 = { 2, 4, 6, 8, 10 };
+            int n2 = arr2.Length;
+            Console.Write("\n GDC 2 = " + gcd.calculationGCD(arr2, n2));
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Algorithms
+namespace Algorithms.History
 {
     public class TwoStrings
     {
@@ -73,6 +73,16 @@ namespace Algorithms
             }
 
             return response;
+        }
+
+        public void executeTwoStrings()
+        {
+            TwoStrings twoStrings = new TwoStrings();
+
+            string s1 = "hello";
+            string s2 = "world";
+
+            var teste = twoStrings.checkTwoStringsV2(s1, s2);
         }
     }
 }

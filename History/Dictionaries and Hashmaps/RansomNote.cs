@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Algorithms
+namespace Algorithms.History
 {
     public class RansomNote
     {
@@ -59,6 +59,16 @@ namespace Algorithms
             }
 
             Console.WriteLine(response);
+        }
+
+        public void executeRansomNote()
+        {
+            RansomNote ransomNote = new RansomNote();
+
+            string[] magazine = { "give", "me", "one", "grand", "today", "night" };
+            string[] note = { "give", "one", "grand", "today" };
+
+            ransomNote.checkMagazine(magazine, note);
         }
     }
 }
