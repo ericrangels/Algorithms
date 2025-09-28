@@ -20,27 +20,72 @@ namespace Algorithms.LeetCode.Trees_Graphs
             }
         }
 
-        public void GetBinaryTreeTraversal(TreeNode root, List<int> list)
+        public List<int> GetBinaryTreeTraversal(TreeNode root)
         {
-            if (root != null)
+            var list = new List<int>();
+            int h = GetTreeHeight(root);
+            int i;
+            for (i = 1; i <= h; i++)
+            {
+                AddCurrentLevelValue(root, i, list);
+            }
+
+            return list;
+        }
+
+        public static void AddCurrentLevelValue(TreeNode root, int level, List<int> list)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            if (level == 1)
             {
                 list.Add(root.val);
-                GetBinaryTreeTraversal(root.left, list);
-                GetBinaryTreeTraversal(root.right, list);
+            }
+            else if (level > 1)
+            {
+                AddCurrentLevelValue(root.left, level - 1, list);
+                AddCurrentLevelValue(root.right, level - 1, list);
+            }
+        }
+
+        public static int GetTreeHeight(TreeNode root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            else
+            {
+                // Compute height of each subtree
+                int lheight = GetTreeHeight(root.left);
+                int rheight = GetTreeHeight(root.right);
+
+                // use the larger one
+                if (lheight > rheight)
+                {
+                    return (lheight + 1);
+                }
+                else
+                {
+                    return (rheight + 1);
+                }
             }
         }
 
         public void RunBinaryTree()
         {
             TreeNode root = new TreeNode(1);
-            root.right = new TreeNode(2);
-            root.left = new TreeNode(3);
+            root.right = new TreeNode(3);
+            root.left = new TreeNode(2);
             root.left.left = new TreeNode(4);
             root.left.right = new TreeNode(5);
+            root.right.left = new TreeNode(6);
+            root.right.right = new TreeNode(7);
 
-            var result = new List<int>();
-
-            GetBinaryTreeTraversal(root, result);
+            var height = GetTreeHeight(root);
+            var result = GetBinaryTreeTraversal(root);
         }
 
     }
